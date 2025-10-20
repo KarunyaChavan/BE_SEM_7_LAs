@@ -9,9 +9,11 @@
 GPA/Assignments/Execution/*.exe
 GPA/Assignments/Execution/*.exp
 GPA/Assignments/Execution/*.obj
+GPA/Assignments/Execution/*.lib
 GPA/CIE2/*.exe
 GPA/CIE2/*.exp
 GPA/CIE2/*.obj
+GPA/CIE2/*.lib
 
 # CUDA specific
 **/*.cu.obj
@@ -24,4 +26,4 @@ __pycache__/
 
 
 # Jupyter Notebook
-ML/ipynb_checkpoints/
+ML/.ipynb_checkpoints/
