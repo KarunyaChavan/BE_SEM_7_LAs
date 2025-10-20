@@ -1,0 +1,27 @@
+# Ignore all compiled files anywhere in the project
+**/*.exe
+**/*.dll
+**/*.so
+**/*.obj
+**/*.exp
+
+# Specific directory ignores
+GPA/Assignments/Execution/*.exe
+GPA/Assignments/Execution/*.exp
+GPA/Assignments/Execution/*.obj
+GPA/CIE2/*.exe
+GPA/CIE2/*.exp
+GPA/CIE2/*.obj
+
+# CUDA specific
+**/*.cu.obj
+**/*.ptx
+**/*.exp
+**/*.cubin
+
+# Python related
+__pycache__/
+
+
+# Jupyter Notebook
+ML/ipynb_checkpoints/
