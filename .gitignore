@@ -24,6 +24,9 @@ GPA/CIE2/*.lib
 # Python related
 __pycache__/
 
+#Ignoring Contracts and Artifacts
+BCT/Execution/.states
+BCT/Execution/artifacts
 
 # Jupyter Notebook
 ML/.ipynb_checkpoints/

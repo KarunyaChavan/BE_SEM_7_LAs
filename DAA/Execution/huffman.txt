@@ -1,0 +1,151 @@
+**HUFFMAN ENCODING — THEORY AND EXPLANATION**
+
+---
+
+## 1️⃣ INTRODUCTION
+
+Huffman Encoding is a Greedy Algorithm used for lossless data compression.
+It assigns variable-length binary codes to characters — characters that occur
+more frequently are given shorter codes, while less frequent ones get longer
+codes.
+
+It ensures that no code is a prefix of another, enabling unique decodability
+(this property is called prefix-free).
+
+This algorithm was invented by David A. Huffman in 1952 at MIT.
+
+---
+
+## 2️⃣ BASIC IDEA
+
+The main goal of Huffman Encoding is to minimize the total cost of encoding.
+This is achieved by constructing a binary tree that minimizes the Weighted
+Path Length (WPL).
+
+Mathematically:
+WPL = Σ (fᵢ × dᵢ)
+where
+fᵢ = frequency of the i-th character
+dᵢ = depth (length of its binary code)
+
+The algorithm builds a binary tree where frequently occurring characters
+are placed closer to the root, resulting in shorter codes.
+
+---
+
+## 3️⃣ WORKING OF HUFFMAN ALGORITHM (STEP BY STEP)
+
+STEP 1:
+List all characters along with their frequencies.
+
+Example:
+Character | Frequency
+---------------------
+
+a         | 5
+b         | 9
+c         | 12
+d         | 13
+e         | 16
+f         | 45
+
+STEP 2:
+Create a leaf node for each character and insert them into a min-heap
+(priority queue) based on their frequency.
+
+STEP 3:
+Repeat the following steps until there is only one node left in the heap:
+
+1. Extract the two nodes with the smallest frequencies.
+2. Create a new internal node with frequency = sum of the two.
+3. Make the extracted nodes the left and right children of the new node.
+4. Insert this new node back into the heap.
+
+This process is greedy, always combining the two least frequent symbols.
+
+STEP 4:
+The remaining node is the root of the Huffman Tree.
+Each left edge is assigned bit '0' and each right edge is assigned bit '1'.
+
+STEP 5:
+Traverse the Huffman Tree to assign binary codes to each character:
+
+* Moving left appends '0' to the code.
+* Moving right appends '1' to the code.
+
+---
+
+## 4️⃣ EXAMPLE
+
+Given characters and frequencies:
+
+## Character | Frequency
+
+a         | 5
+b         | 9
+c         | 12
+d         | 13
+e         | 16
+f         | 45
+
+Building Process:
+
+## Step | Extracted Nodes | New Node (Sum) | Remaining Heap
+
+1    | a(5), b(9)      | 14             | c(12), d(13), e(16), f(45), 14
+2    | c(12), d(13)    | 25             | e(16), f(45), 14, 25
+3    | e(16), 14       | 30             | f(45), 25, 30
+4    | 25, 30          | 55             | f(45), 55
+5    | f(45), 55       | 100            | (root)
+
+Final Huffman Tree constructed.
+
+---
+
+## 5️⃣ GENERATED HUFFMAN CODES
+
+## Character | Huffman Code
+
+f         | 0
+c         | 100
+d         | 101
+a         | 1100
+b         | 1101
+e         | 111
+
+---
+
+## 6️⃣ ADVANTAGES
+
+1. Produces the most optimal variable-length encoding.
+2. Efficient for text compression (e.g., ZIP, JPEG, MP3 use variants).
+3. Ensures prefix-free property, making decoding unambiguous.
+
+---
+
+## 7️⃣ LIMITATIONS
+
+1. Requires knowledge of frequency distribution in advance.
+2. Inefficient if all symbols have nearly equal frequencies.
+3. Not suitable for real-time or streaming data compression.
+
+---
+
+## 8️⃣ COMPLEXITY ANALYSIS
+
+Time Complexity  : O(n log n)
+Space Complexity : O(n)
+
+Reason:
+Heap operations (insert and extract-min) take O(log n) each, and there are
+O(n) such operations during tree construction.
+
+---
+
+## 9️⃣ CONCLUSION
+
+Huffman Encoding is an optimal, lossless compression technique based on
+the Greedy strategy. By combining the least frequent symbols first, it
+ensures minimal average code length, reducing storage requirements while
+maintaining full data fidelity.
+-------------------------------
